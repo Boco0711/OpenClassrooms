@@ -17,7 +17,7 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
 
     private ImageView mNeighbourAvatar;
     private TextView mNeighbourName;
-
+    private TextView mNeighbourNameInContact;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
 
         mNeighbourAvatar = (ImageView) findViewById(R.id.neighbourProfilPic);
         mNeighbourName = (TextView) findViewById(R.id.neighbourNameInProfilePicture);
-
+        mNeighbourNameInContact = (TextView) findViewById(R.id.neighbourNameInDescription);
         Bundle b = getIntent().getExtras();
         String neighbourName = null;
         String neighbourAvatar = null;
@@ -34,7 +34,7 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
             neighbourAvatar = b.getString("neighbourAvatar");
         }
         mNeighbourName.setText(neighbourName);
-
+        mNeighbourNameInContact.setText(neighbourName);
 
         //CropTransformation cropTransformation = new CropTransformation(100, 90, CropType.TOP);
 
