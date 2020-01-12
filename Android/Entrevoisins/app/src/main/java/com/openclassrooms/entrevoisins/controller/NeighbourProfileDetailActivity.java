@@ -18,6 +18,8 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
     private ImageView mNeighbourAvatar;
     private TextView mNeighbourName;
     private TextView mNeighbourNameInContact;
+    private TextView mNeighbourDescription;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +28,20 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
         mNeighbourAvatar = (ImageView) findViewById(R.id.neighbourProfilPic);
         mNeighbourName = (TextView) findViewById(R.id.neighbourNameInProfilePicture);
         mNeighbourNameInContact = (TextView) findViewById(R.id.neighbourNameInDescription);
+        mNeighbourDescription = (TextView) findViewById(R.id.neighbourAPropos);
+
         Bundle b = getIntent().getExtras();
         String neighbourName = null;
         String neighbourAvatar = null;
+        String neighbourDescription = null;
         if(b != null) {
             neighbourName = b.getString("neighbourName");
             neighbourAvatar = b.getString("neighbourAvatar");
+            neighbourDescription = b.getString("neighbourDescription");
         }
         mNeighbourName.setText(neighbourName);
         mNeighbourNameInContact.setText(neighbourName);
+        mNeighbourDescription.setText(neighbourDescription);
 
         //CropTransformation cropTransformation = new CropTransformation(100, 90, CropType.TOP);
 
