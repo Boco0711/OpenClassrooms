@@ -16,16 +16,32 @@ public class Neighbour {
     /** Avatar */
     private String avatarUrl;
 
+    /** Location */
+    private String coordinates;
+
+    /** Phone number */
+    private String phoneNumber;
+
+    /** Social network link */
+    private String socialNetworkUrl;
+
+    /** Description */
+    private String description;
+
     /**
      * Constructor
      * @param id
      * @param name
      * @param avatarUrl
      */
-    public Neighbour(Integer id, String name, String avatarUrl) {
+    public Neighbour(Integer id, String name, String avatarUrl, String coordinates, String phoneNumber, String socialNetworkUrl, String description) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
+        this.coordinates = coordinates;
+        this.phoneNumber = phoneNumber;
+        this.socialNetworkUrl = socialNetworkUrl;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -50,6 +66,38 @@ public class Neighbour {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public String getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(String coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getSocialNetworkUrl() {
+        return socialNetworkUrl;
+    }
+
+    public void setSocialNetworkUrl(String socialNetworkUrl) {
+        this.socialNetworkUrl = socialNetworkUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
