@@ -28,6 +28,11 @@ public class Neighbour {
     /** Description */
     private String description;
 
+    /** Favorite or not */
+    private boolean isFav;
+
+
+
     /**
      * Constructor
      * @param id
@@ -42,6 +47,7 @@ public class Neighbour {
         this.phoneNumber = phoneNumber;
         this.socialNetworkUrl = socialNetworkUrl;
         this.description = description;
+        this.isFav = false;
     }
 
     public Integer getId() {
@@ -98,6 +104,14 @@ public class Neighbour {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isFav() {
+        return isFav;
+    }
+
+    public void setFav(boolean fav) {
+        isFav = fav;
     }
 
     @Override
