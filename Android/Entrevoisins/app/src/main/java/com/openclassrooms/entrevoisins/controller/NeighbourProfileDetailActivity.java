@@ -66,6 +66,10 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
             neighbourSocial = b.getString("neighbourSocial");
             isNeighbourAFav = b.getBoolean("neighbourIsFav");
         }
+
+        //Mise a net de l'image mise dans les faux profil. A retirer par la suite.
+        String neighbourAvatarInHd = neighbourAvatar.substring(0, neighbourAvatar.indexOf("150")) + "500" + neighbourAvatar.substring(neighbourAvatar.indexOf("?"));
+
         mNeighbourName.setText(neighbourName);
         mNeighbourNameInContact.setText(neighbourName);
         mNeighbourLocation.setText(neighbourAdresse);
@@ -75,9 +79,7 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
         mNeighbourDescription.setMovementMethod(new ScrollingMovementMethod());
 
         Glide.with(mNeighbourAvatar.getContext())
-                .load(neighbourAvatar)
-                .override(100, 70)
-                .centerCrop()
+                .load(neighbourAvatarInHd)
                 .into(mNeighbourAvatar);
 
         this.configureToolbar();
