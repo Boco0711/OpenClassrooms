@@ -4,6 +4,7 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +12,10 @@ import org.junit.runners.JUnit4;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test on Neighbour service
@@ -27,6 +30,9 @@ public class NeighbourServiceTest {
         service = DI.getNewInstanceApiService();
     }
 
+    @After
+    public void reset() { DummyNeighbourGenerator.generateNeighbours(); }
+
     @Test
     public void getNeighboursWithSuccess() {
         List<Neighbour> neighbours = service.getNeighbours();
@@ -39,5 +45,25 @@ public class NeighbourServiceTest {
         Neighbour neighbourToDelete = service.getNeighbours().get(0);
         service.deleteNeighbour(neighbourToDelete);
         assertFalse(service.getNeighbours().contains(neighbourToDelete));
+    }
+
+    @Test
+    public void setNeighbourFavouriteWithSuccess(){
+        List<Neighbour> favouritesNeighbours = service.getFavoritesNeighbours();
+        service.setNeighbourFav(2, true);
+        boolean test = service.getNeighbours().get(1).isFav();
+        assertEquals(true, test);
+    }
+
+    @Test
+    public void getFavouriteNeighbourWithSuccess() {
+        int numberOfFav = 0;
+        List<Neighbour> neighbours = service.getNeighbours();
+        for (int i = 0; i<neighbours.size(); i++) {
+            if (neighbours.get(i).isFav())
+                numberOfFav++;
+        }
+        List<Neighbour> favouritesNeighbours = service.getFavoritesNeighbours();
+        assertEquals(numberOfFav, favouritesNeighbours.size());
     }
 }
