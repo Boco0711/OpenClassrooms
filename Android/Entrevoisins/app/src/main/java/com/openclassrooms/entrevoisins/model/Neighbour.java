@@ -39,7 +39,7 @@ public class Neighbour {
      * @param name
      * @param avatarUrl
      */
-    public Neighbour(Integer id, String name, String avatarUrl, String coordinates, String phoneNumber, String socialNetworkUrl, String description) {
+    public Neighbour(Integer id, String name, String avatarUrl, String coordinates, String phoneNumber, String socialNetworkUrl, String description, boolean isFav) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
@@ -47,7 +47,7 @@ public class Neighbour {
         this.phoneNumber = phoneNumber;
         this.socialNetworkUrl = socialNetworkUrl;
         this.description = description;
-        this.isFav = false;
+        this.isFav = isFav;
     }
 
     public Integer getId() {
