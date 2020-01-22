@@ -15,7 +15,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test on Neighbour service
@@ -29,9 +28,6 @@ public class NeighbourServiceTest {
     public void setup() {
         service = DI.getNewInstanceApiService();
     }
-
-    @After
-    public void reset() { DummyNeighbourGenerator.generateNeighbours(); }
 
     @Test
     public void getNeighboursWithSuccess() {
@@ -49,10 +45,8 @@ public class NeighbourServiceTest {
 
     @Test
     public void setNeighbourFavouriteWithSuccess(){
-        List<Neighbour> favouritesNeighbours = service.getFavoritesNeighbours();
         service.setNeighbourFav(2, true);
-        boolean test = service.getNeighbours().get(1).isFav();
-        assertEquals(true, test);
+        assertEquals(true, service.getNeighbours().get(1).isFav());
     }
 
     @Test
@@ -63,7 +57,7 @@ public class NeighbourServiceTest {
             if (neighbours.get(i).isFav())
                 numberOfFav++;
         }
-        List<Neighbour> favouritesNeighbours = service.getFavoritesNeighbours();
-        assertEquals(numberOfFav, favouritesNeighbours.size());
+        neighbours = service.getFavoritesNeighbours();
+        assertEquals(numberOfFav, neighbours.size());
     }
 }
