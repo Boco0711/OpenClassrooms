@@ -1,12 +1,15 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -47,10 +50,10 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
 
-        holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent neighbourActivityIntent = new Intent(v.getContext(), NeighbourProfileDetailActivity.class);
+            public void onClick(View view) {
+                Intent neighbourActivityIntent = new Intent(view.getContext(), NeighbourProfileDetailActivity.class);
                 neighbourActivityIntent.putExtra("neighbourId", neighbour.getId());
                 neighbourActivityIntent.putExtra( "neighbourName", neighbour.getName());
                 neighbourActivityIntent.putExtra("neighbourAvatar", neighbour.getAvatarUrl());
@@ -59,17 +62,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 neighbourActivityIntent.putExtra("neighbourPhone", neighbour.getPhoneNumber());
                 neighbourActivityIntent.putExtra("neighbourSocial", neighbour.getSocialNetworkUrl());
                 neighbourActivityIntent.putExtra("neighbourIsFav", neighbour.isFav());
-                v.getContext().startActivity(neighbourActivityIntent);
-            }
-        });
-
-        holder.mNeighbourAvatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent neighbourActivityIntent = new Intent(v.getContext(), NeighbourProfileDetailActivity.class);
-                neighbourActivityIntent.putExtra( "neighbourName", neighbour.getName());
-                neighbourActivityIntent.putExtra("neighbourAvatar", neighbour.getAvatarUrl());
-                v.getContext().startActivity(neighbourActivityIntent);
+                view.getContext().startActivity(neighbourActivityIntent);
             }
         });
 
@@ -93,6 +86,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         public TextView mNeighbourName;
         @BindView(R.id.item_list_delete_button)
         public ImageButton mDeleteButton;
+        @BindView(R.id.parent_layout)
+        ConstraintLayout parentLayout;
 
         public ViewHolder(View view) {
             super(view);
