@@ -15,17 +15,36 @@ import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NeighbourProfileDetailActivity extends AppCompatActivity {
 
     private NeighbourApiService neighbourApiService;
-    private ImageView mNeighbourAvatar;
-    private TextView mNeighbourName;
-    private TextView mNeighbourNameInContact;
-    private TextView mNeighbourDescription;
-    private TextView mNeighbourLocation;
-    private TextView mNeighbourPhoneNumber;
-    private TextView mNeighbourSocialMedia;
-    private FloatingActionButton mNeighbourFavButton;
+    @BindView(R.id.neighbourProfilPic)
+    ImageView mNeighbourAvatar;
+
+    @BindView(R.id.neighbourNameInProfilePicture)
+    TextView mNeighbourName;
+
+    @BindView(R.id.neighbourNameInDescription)
+    TextView mNeighbourNameInContact;
+
+    @BindView(R.id.neighbourAPropos)
+    TextView mNeighbourDescription;
+
+    @BindView(R.id.textLocation)
+    TextView mNeighbourLocation;
+
+    @BindView(R.id.textPhone)
+    TextView mNeighbourPhoneNumber;
+
+    @BindView(R.id.textSocial)
+    TextView mNeighbourSocialMedia;
+
+    @BindView(R.id.isNeighbourFav)
+    FloatingActionButton mNeighbourFavButton;
+
     private boolean isNeighbourAFav;
 
     private int imageNumber;
@@ -37,45 +56,27 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neighbour_profile_detail);
+        ButterKnife.bind(this);
 
         neighbourApiService = DI.getNeighbourApiService();
-        mNeighbourAvatar = (ImageView) findViewById(R.id.neighbourProfilPic);
-        mNeighbourName = (TextView) findViewById(R.id.neighbourNameInProfilePicture);
-        mNeighbourNameInContact = (TextView) findViewById(R.id.neighbourNameInDescription);
-        mNeighbourLocation = (TextView) findViewById(R.id.textLocation);
-        mNeighbourPhoneNumber = (TextView) findViewById(R.id.textPhone);
-        mNeighbourSocialMedia = (TextView) findViewById(R.id.textSocial);
-        mNeighbourDescription = (TextView) findViewById(R.id.neighbourAPropos);
-        mNeighbourFavButton = (FloatingActionButton) findViewById(R.id.isNeighbourFav);
 
         Bundle b = getIntent().getExtras();
-        String neighbourName = null;
         String neighbourAvatar = null;
-        String neighbourDescription = null;
-        String neighbourAdresse = null;
-        String neighbourPhone = null;
-        String neighbourSocial = null;
-
-        if(b != null) {
-            neighbourId = b.getInt("neighbourId");
-            neighbourName = b.getString("neighbourName");
-            neighbourAvatar = b.getString("neighbourAvatar");
-            neighbourDescription = b.getString("neighbourDescription");
-            neighbourAdresse =b.getString("neighbourAdresse");
-            neighbourPhone = b.getString("neighbourPhone");
-            neighbourSocial = b.getString("neighbourSocial");
-            isNeighbourAFav = b.getBoolean("neighbourIsFav");
-        }
 
         //Mise a net de l'image mise dans les faux profil. A retirer par la suite.
+        if(b != null) {
+            neighbourId = b.getInt("neighbourId");
+            neighbourAvatar = b.getString("neighbourAvatar");
+            mNeighbourName.setText(b.getString("neighbourName"));
+            mNeighbourNameInContact.setText(b.getString("neighbourName"));
+            mNeighbourLocation.setText(b.getString("neighbourAdresse"));
+            mNeighbourPhoneNumber.setText(b.getString("neighbourPhone"));
+            mNeighbourSocialMedia.setText(b.getString("neighbourSocial"));
+            mNeighbourDescription.setText(b.getString("neighbourDescription"));
+            isNeighbourAFav = b.getBoolean("neighbourIsFav");
+        }
         String neighbourAvatarInHd = neighbourAvatar.substring(0, neighbourAvatar.indexOf("150")) + "500" + neighbourAvatar.substring(neighbourAvatar.indexOf("?"));
 
-        mNeighbourName.setText(neighbourName);
-        mNeighbourNameInContact.setText(neighbourName);
-        mNeighbourLocation.setText(neighbourAdresse);
-        mNeighbourPhoneNumber.setText(neighbourPhone);
-        mNeighbourSocialMedia.setText(neighbourSocial);
-        mNeighbourDescription.setText(neighbourDescription);
         mNeighbourDescription.setMovementMethod(new ScrollingMovementMethod());
 
         Glide.with(mNeighbourAvatar.getContext())
