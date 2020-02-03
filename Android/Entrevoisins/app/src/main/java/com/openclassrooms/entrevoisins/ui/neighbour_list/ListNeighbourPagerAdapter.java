@@ -13,8 +13,8 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
     /**
      * getItem is called to instantiate the fragment for the given page.
-     * @param position
-     * @return
+     * @param position say if which tab is selected
+     * @return new instance of NeighbourFragment or FavouriteNeighbourFragment depending on tab selected
      */
     @Override
     public Fragment getItem(int position) {

@@ -1,21 +1,16 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Toast;
 
 import com.openclassrooms.entrevoisins.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ListNeighbourActivity extends AppCompatActivity {
 
@@ -44,6 +39,12 @@ public class ListNeighbourActivity extends AppCompatActivity {
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
 
+    /**
+     * Get the button to add a neighbour clickable.
+     * Doesn't do anything exept shox a message that say user add.
+     * Do not add user yet.
+     * In comment because not part of what was asked.
+     */
     /*
     Ici la méthode qui rend le bouton Clickable, retiré pour linstant car pas d'utilité et de consigne ( Et supposé être déja présenté par le prédécesseur )
     @OnClick(R.id.addButton)

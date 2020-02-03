@@ -85,6 +85,9 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
 
         this.configureToolbar();
 
+        /**
+         * Set image depending on fav Status of neighbour
+         */
         if (isNeighbourAFav) {
             mNeighbourFavButton.setImageResource(R.drawable.ic_star_white_24dp);
             imageNumber = 0;
@@ -104,6 +107,10 @@ public class NeighbourProfileDetailActivity extends AppCompatActivity {
         ab.setDisplayShowTitleEnabled(false);
     }
 
+    /**
+     * Change the image of mNeighbourFavButton depending on favorite status
+     * Set or unset favorite depending on fav status before the click.
+     */
     public void buttonClick() {
         mNeighbourFavButton.setOnClickListener(new View.OnClickListener() {
             @Override

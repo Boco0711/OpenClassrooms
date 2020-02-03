@@ -38,6 +38,10 @@ public class FavouriteNeighbourFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     *  initialise mApiService with DI
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +61,7 @@ public class FavouriteNeighbourFragment extends Fragment {
     }
 
     /**
-     * Init the List of neighbours
+     * Init the List of favorites neighbours
      */
     private void initList() {
         mNeighbours = mApiService.getFavoritesNeighbours();
