@@ -49,6 +49,6 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     public void setNeighbourFav(int neighbourId, boolean bool) {
         for (Neighbour neighbour : neighbours)
             if (neighbour.getId() == neighbourId)
-                neighbour.setFav(true);
+                neighbour.setFav(bool);
     }
 }
